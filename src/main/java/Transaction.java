@@ -1,22 +1,33 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class Transaction {
     private int transactionId;
-    private int amountIdSender;
+    private int senderAccountId;
+    private int receiverAccountId;
     private int transactionType;
     private double amountMoney;
     private String receiverAccountNumber;
+    private String senderAccountNumber;
     private String time;
     private double balanceAfterSend;
     private String message;
 
-    public Transaction(int transactionId, int amountIdSender, int transactionType, double amountMoney, String receiverAccountNumber, String time, double balanceAfterSend, String message) {
+    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, int transactionType, double amountMoney, String receiverAccountNumber, String senderAccountNumber, String time, double balanceAfterSend, String message) {
         this.transactionId = transactionId;
-        this.amountIdSender = amountIdSender;
+        this.senderAccountId = senderAccountId;
+        this.receiverAccountId = receiverAccountId;
         this.transactionType = transactionType;
         this.amountMoney = amountMoney;
         this.receiverAccountNumber = receiverAccountNumber;
+        this.senderAccountNumber = senderAccountNumber;
         this.time = time;
         this.balanceAfterSend = balanceAfterSend;
         this.message = message;
+    }
+
+    public Transaction() {
     }
 
     public int getTransactionId() {
@@ -27,12 +38,20 @@ public class Transaction {
         this.transactionId = transactionId;
     }
 
-    public int getAmountIdSender() {
-        return amountIdSender;
+    public int getSenderAccountId() {
+        return senderAccountId;
     }
 
-    public void setAmountIdSender(int amountIdSender) {
-        this.amountIdSender = amountIdSender;
+    public void setSenderAccountId(int senderAccountId) {
+        this.senderAccountId = senderAccountId;
+    }
+
+    public int getReceiverAccountId() {
+        return receiverAccountId;
+    }
+
+    public void setReceiverAccountId(int receiverAccountId) {
+        this.receiverAccountId = receiverAccountId;
     }
 
     public int getTransactionType() {
@@ -59,6 +78,14 @@ public class Transaction {
         this.receiverAccountNumber = receiverAccountNumber;
     }
 
+    public String getSenderAccountNumber() {
+        return senderAccountNumber;
+    }
+
+    public void setSenderAccountNumber(String senderAccountNumber) {
+        this.senderAccountNumber = senderAccountNumber;
+    }
+
     public String getTime() {
         return time;
     }
@@ -81,5 +108,15 @@ public class Transaction {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void delete(Connection conn, Transaction trans) throws SQLException {
+        System.out.println("Inside delete");
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM `bank`.`transaction` WHERE (`idTransaction` = '2');");
+        int roww = statement.executeUpdate();
+
+        if (roww < 0) {
+            System.out.println("Delete unsuccessfull");
+        }
     }
 }
