@@ -1,20 +1,12 @@
 import java.sql.*;
 
-public class Main {
-    public static void main(String[] args) {
-        final String DB_URL = "jdbc:mysql://localhost:3306/bank";
-        final String PASSWORD = "";
-        final String USER_NAME = "root";
-
-        try {
-            Connection conn = getConnection(DB_URL, USER_NAME, PASSWORD);
-            Statement statement = conn.createStatement();
-        }catch (SQLException e){
-            System.out.println("Have SQLException");
-        }
-
-
-
+public class DBConnection {
+    public static void main(String[] args) throws SQLException {
+        String DB_URL = "jdbc:mysql://localhost:3306/bank";
+        String PASSWORD = "";
+        String USER_NAME = "root";
+        Connection conn = getConnection(DB_URL, USER_NAME, PASSWORD);
+        Statement statement = conn.createStatement();
     }
 
     public static Connection getConnection(String dbURL, String userName, String password) {
@@ -29,9 +21,4 @@ public class Main {
         }
         return conn;
     }
-
-    public static void delete(){
-
-    }
-
 }
