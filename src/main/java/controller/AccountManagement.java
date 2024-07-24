@@ -39,4 +39,30 @@ public class AccountManagement {
                 break;
         }
     }
+
+    public void withdraw(Account account, double amount) {
+        if(account.getBalance() > amount ){
+            account.setBalance(account.getBalance() - amount); ;
+            //update database with id of account
+            System.out.println("Your balance is " + balance);
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
+
+    public void transfer(double amount) {
+        if(balance > amount) {
+            this.balance -= amount;
+        }
+        //update database with id of account
+        System.out.println("Transfer successful");
+        System.out.println("Your balance is " + balance);
+    }
+
+    public void deposit(double amount) {
+        if(amount > 0) {
+            this.balance += amount;
+        }
+        System.out.println("Your balance is " + balance);
+    }
 }

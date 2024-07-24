@@ -78,27 +78,5 @@ public class Account {
         this.bankID = bankID;
     }
 
-    public void deposit(double amount) {
-        if(amount > 0) {
-            this.balance += amount;
-        }
-        System.out.println("Your balance is " + balance);
-    }
 
-    public void withdraw(double amount) {
-        if(balance > amount ){
-            this.balance -= amount;
-            System.out.println("Your balance is " + balance);
-        } else {
-            System.out.println("Insufficient balance");
-        }
-    }
-
-    public void transfer(double amount) {
-        if(balance > amount) {
-            this.balance -= amount;
-        }
-        System.out.println("Transfer successful");
-        System.out.println("Your balance is " + balance);
-    }
 }
