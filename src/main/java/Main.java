@@ -1,8 +1,43 @@
+import controller.AccountManagement;
+import controller.CustomerManagement;
+import controller.TransactionManagement;
+import data.Account;
+import data.Customer;
+import data.Transaction;
+import mysqldatabase.DatabaseConnection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) {
-        //implement here
+    public static void main(String[] args) throws SQLException {
+        //khởi tạo
+        Transaction transactionDB = new Transaction();
+        Customer customerDB = new Customer();
+        Account accountDB = new Account();
+
+        TransactionManagement transactionManagement = new TransactionManagement();
+        CustomerManagement customerManagement = new CustomerManagement();
+        AccountManagement accountManagement = new AccountManagement();
+
+        Connection connection = new DatabaseConnection().getConnection();
+
+        System.out.println("Enter your choice");
+        System.out.println("1. Delete data.Transaction");
+        System.out.println("2. Delete data.Customer");
+        System.out.println("3. Delete data.Account");
+        switch (new Scanner(System.in).nextInt()) {
+            case 1:
+                transactionManagement.deleteTransaction(connection, transactionDB);
+                break;
+            case 2:
+                customerManagement.deleteCustomer(connection, customerDB);
+                break;
+            case 3:
+                accountManagement.deleteAccount(connection, accountDB);
+                break;
+            default: break;
+        }
     }
-//    git remote add origin https://github.com/NguyenKhacPhuc/bank-simulator.git
-//    git branch -M master
-//    git push -u origin master
 }
