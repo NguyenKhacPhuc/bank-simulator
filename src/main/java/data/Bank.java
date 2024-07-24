@@ -16,22 +16,6 @@ public class Bank {
         this.transactions = transactions;
     }
 
-    public void addCustomer(Customer customer) {
-        customers.add(customer);
-    }
-
-    public void addAccount(Account account) {
-        accounts.add(account);
-    }
-
-    public void removeAccount(Account account) {
-        accounts.remove(account);
-    }
-
-    public void executeTransaction(Transaction transaction) {
-        transactions.add(transaction);
-    }
-
     public List<Customer> getCustomers() {
         return customers;
     }
