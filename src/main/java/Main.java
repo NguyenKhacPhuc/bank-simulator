@@ -2,6 +2,7 @@ import controller.AccountManagement;
 import controller.CustomerManagement;
 import controller.TransactionManagement;
 import data.Account;
+import data.Bank;
 import data.Customer;
 import data.Transaction;
 import mysqldatabase.DatabaseConnection;
@@ -23,7 +24,7 @@ public class Main {
         AccountManagement accountManagement = new AccountManagement();
 
         Connection connection = new DatabaseConnection().getConnection();
-
+        Bank bank = new Bank(customerManagement.getAllCustomer(connection), null, null);
         System.out.println("Enter your choice");
         System.out.println("1. Delete data.Transaction");
         System.out.println("2. Delete data.Customer");

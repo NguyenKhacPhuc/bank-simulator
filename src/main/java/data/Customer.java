@@ -48,4 +48,14 @@ public class Customer {
     public void setAccountsID(String accountsID) {
         this.accountsID = accountsID;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerID=" + customerID +
+                ", Name='" + Name + '\'' +
+                ", Address='" + Address + '\'' +
+                ", accountsID='" + accountsID + '\'' +
+                '}';
+    }
 }

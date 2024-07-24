@@ -3,7 +3,9 @@ package controller;
 import data.Transaction;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,8 +24,7 @@ public class TransactionManagement {
             System.out.println("Delete unsuccessfull");
         }
     }
-    public List<Transaction> getAllTransaction() {
-        //get all transaction in db
+    public List<Transaction> getAllTransaction(Connection conn) throws SQLException {
         return null;
     }
 

@@ -31,4 +31,16 @@ public class Bank {
     public void executeTransaction(Transaction transaction) {
         transactions.add(transaction);
     }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public List<Account> getAccounts() {
+        return accounts;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 }
