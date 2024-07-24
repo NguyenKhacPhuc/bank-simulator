@@ -10,11 +10,11 @@ public class Transaction {
     private double amountMoney;
     private String receiverAccountNumber;
     private String senderAccountNumber;
-    private String time;
+    private java.sql.Date time;
     private double balanceAfterSend;
     private String message;
 
-    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, String transactionType, double amountMoney, String receiverAccountNumber, String senderAccountNumber, String time, double balanceAfterSend, String message) {
+    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, String transactionType, double amountMoney, String receiverAccountNumber, String senderAccountNumber, java.sql.Date time, double balanceAfterSend, String message) {
         this.transactionId = transactionId;
         this.senderAccountId = senderAccountId;
         this.receiverAccountId = receiverAccountId;
@@ -89,11 +89,11 @@ public class Transaction {
         this.senderAccountNumber = senderAccountNumber;
     }
 
-    public String getTime() {
+    public java.sql.Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(java.sql.Date time) {
         this.time = time;
     }
 

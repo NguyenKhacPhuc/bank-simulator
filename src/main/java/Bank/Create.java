@@ -1,18 +1,22 @@
 package Bank;
 
 import java.sql.*;
+import java.text.DateFormat;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.temporal.ChronoField;
+import java.time.temporal.TemporalField;
 
 public class Create {
     public static void main(String[] args) {
         try {
-            String DB_URL = "jdbc:mysql://localhost:3306/bank";
-            String PASSWORD = "";
+            String DB_URL = "jdbc:mysql://localhost:3306/schema1";
+            String PASSWORD = "phuc1213";
             String USER_NAME = "root";
             java.sql.Connection conn = getConnection(DB_URL, USER_NAME, PASSWORD);
             //createCustomer(conn, new Customer(6, "Nguyen Van K", 22, "Hue", 3));
             //createAccount(conn, new Account(5, 5000, "Nguyen Van K", "0966238399", 10000, "123456", 3));
-            createTransaction(conn, new Transaction(2, 1, 1, "TRANSFERS", 200, "0966238315", "0966238336", LocalTime.now().toString(), 6800, "Done"));
+            createTransaction(conn, new Transaction(2, 1, 1, "TRANSFERS", 200, "0966238315", "0966238336", new java.sql.Date(LocalDate.now().toEpochDay()), 6800, "Done"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +64,7 @@ public class Create {
         statement.setInt(1, transaction.getTransactionId());
         statement.setString(2, transaction.getSenderAccountNumber());
         statement.setString(3, transaction.getReceiverAccountNumber());
-        statement.setString(4, transaction.getTime());
+        statement.setString(4, transaction.getTime().toString());
         statement.setDouble(5, transaction.getAmountMoney());
         statement.setDouble(6, transaction.getBalanceAfterSend());
         statement.setString(7, transaction.getMessage());
