@@ -1,21 +1,25 @@
-public class Customer {
-    private String customerID;
-    private String Name;
-    private String Address;
-    private String accountsID;
+package Bank;
 
-    public Customer(String customerID, String name, String address, String accountsID) {
+public class Customer {
+    private int customerID;
+    private String Name;
+    private int Age;
+    private String Address;
+    private int accountsID;
+
+    public Customer(int customerID, String name, int age, String address, int accountsID) {
         this.customerID = customerID;
         Name = name;
+        Age = age;
         Address = address;
         this.accountsID = accountsID;
     }
 
-    public String getCustomerID() {
+    public int getCustomerID() {
         return customerID;
     }
 
-    public void setCustomerID(String customerID) {
+    public void setCustomerID(int customerID) {
         this.customerID = customerID;
     }
 
@@ -27,6 +31,14 @@ public class Customer {
         Name = name;
     }
 
+    public int getAge() {
+        return Age;
+    }
+
+    public void setAge(int age) {
+        Age = age;
+    }
+
     public String getAddress() {
         return Address;
     }
@@ -35,11 +47,11 @@ public class Customer {
         Address = address;
     }
 
-    public String getAccountsID() {
+    public int getAccountsID() {
         return accountsID;
     }
 
-    public void setAccountsID(String accountsID) {
+    public void setAccountsID(int accountsID) {
         this.accountsID = accountsID;
     }
 }
