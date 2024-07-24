@@ -1,12 +1,16 @@
 package controller;
 
+import data.Account;
 import data.Customer;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
+//update fields of customer
+// Chau
 public class CustomerManagement {
     public void deleteCustomer(Connection conn, Customer customer) throws SQLException {
         System.out.println("Inside delete");
@@ -17,5 +21,9 @@ public class CustomerManagement {
         if (roww < 0) {
             System.out.println("Delete unsuccessfull");
         }
+    }
+
+    public List<Customer> getAllCustomer() {
+        return null;
     }
 }

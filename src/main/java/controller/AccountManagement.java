@@ -5,8 +5,13 @@ import data.Account;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
+
+//Vinh
+//handle error
+//finish
 public class AccountManagement {
     public void deleteAccount(Connection conn, Account account) throws SQLException {
         System.out.println("Inside delete");
@@ -41,28 +46,18 @@ public class AccountManagement {
     }
 
     public void withdraw(Account account, double amount) {
-        if(account.getBalance() > amount ){
-            account.setBalance(account.getBalance() - amount); ;
-            //update database with id of account
-            System.out.println("Your balance is " + balance);
-        } else {
-            System.out.println("Insufficient balance");
-        }
+
     }
 
     public void transfer(double amount) {
-        if(balance > amount) {
-            this.balance -= amount;
-        }
-        //update database with id of account
-        System.out.println("Transfer successful");
-        System.out.println("Your balance is " + balance);
+
     }
 
     public void deposit(double amount) {
-        if(amount > 0) {
-            this.balance += amount;
-        }
-        System.out.println("Your balance is " + balance);
+
+    }
+
+    public List<Account> getAllAccount() {
+        return null;
     }
 }

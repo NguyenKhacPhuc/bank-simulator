@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
+    //Load data everytime app start: Đức Anh
     public static void main(String[] args) throws SQLException {
         //khởi tạo
         Transaction transactionDB = new Transaction();

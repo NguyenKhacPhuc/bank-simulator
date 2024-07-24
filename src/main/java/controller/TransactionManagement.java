@@ -4,8 +4,11 @@ import data.Transaction;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Scanner;
 
+//update fields
+//get
 public class TransactionManagement {
 
     public void deleteTransaction(Connection conn, Transaction trans) throws SQLException {
@@ -19,4 +22,9 @@ public class TransactionManagement {
             System.out.println("Delete unsuccessfull");
         }
     }
+    public List<Transaction> getAllTransaction() {
+        //get all transaction in db
+        return null;
+    }
+
 }

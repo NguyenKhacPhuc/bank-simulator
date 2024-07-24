@@ -10,10 +10,10 @@ public class Bank {
     private List<Transaction> transactions;
 
 
-    public Bank() {
-        customers = new ArrayList<>();
-        accounts = new ArrayList<>();
-        transactions = new ArrayList<>();
+    public Bank(List<Customer> customers, List<Account> accounts, List<Transaction> transactions) {
+        this.customers = customers;
+        this.accounts = accounts;
+        this.transactions = transactions;
     }
 
     public void addCustomer(Customer customer) {
@@ -30,23 +30,5 @@ public class Bank {
 
     public void executeTransaction(Transaction transaction) {
         transactions.add(transaction);
-    }
-
-    public Customer getCustomerDetails(String customerId) {
-        for(Customer customer : customers) {
-            if(Objects.equals(customer.getCustomerID(), customerId)) {
-                return customer;
-            }
-        }
-        return null;
-    }
-
-    public Account getAccountDetails(int accountId) {
-        for(Account account : accounts) {
-            if(account. getAccountID()== accountId) {
-                return account;
-            }
-        }
-        return null;
     }
 }
