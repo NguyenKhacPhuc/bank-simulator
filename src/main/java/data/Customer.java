@@ -1,3 +1,5 @@
+package data;
+
 public class Customer {
     private int customerID;
     private String Name;

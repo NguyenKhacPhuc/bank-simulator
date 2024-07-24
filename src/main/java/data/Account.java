@@ -1,3 +1,5 @@
+package data;
+
 public class Account {
     private int accountID;
     private double balance;
