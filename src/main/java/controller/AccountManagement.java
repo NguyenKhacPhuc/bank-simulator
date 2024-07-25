@@ -13,6 +13,8 @@ import java.util.Scanner;
 //handle error
 //finish
 public class AccountManagement {
+    
+
     public void deleteAccount(Connection conn, Account account) throws SQLException {
         System.out.println("Inside delete");
         System.out.println("1. Delete with account id");
