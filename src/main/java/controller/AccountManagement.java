@@ -13,8 +13,6 @@ import java.util.Scanner;
 //handle error
 //finish
 public class AccountManagement {
-    
-
     public void deleteAccount(Connection conn, Account account) throws SQLException {
         System.out.println("Inside delete");
         System.out.println("1. Delete with account id");
@@ -25,7 +23,6 @@ public class AccountManagement {
                 System.out.println("Enter id account you want to delete: ");
                 account.setAccountID(new Scanner(System.in).nextInt());
                 PreparedStatement statement = conn.prepareStatement("DELETE FROM `schema1`.`account` WHERE (`idAccount` = '" + account.getAccountID() + "');");
-
                 if (statement.executeUpdate() < 0) {
                     System.out.println("Delete unsuccessfull");
                 }
@@ -35,7 +32,6 @@ public class AccountManagement {
                 System.out.println("Enter number of account you want to delete: ");
                 account.setAccNumber(new Scanner(System.in).nextLine());
                 PreparedStatement statement2 = conn.prepareStatement("DELETE FROM `schema1`.`account` WHERE (`accNumber` = '" + account.getAccNumber() + "');");
-
                 if (statement2.executeUpdate() < 0) {
                     System.out.println("Delete unsuccessfull");
                 }

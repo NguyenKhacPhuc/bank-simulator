@@ -19,7 +19,7 @@ public class CustomerManagement {
         System.out.println("Inside delete");
         System.out.println("Enter id customer you want to delete: ");
         customer.setCustomerID(new Scanner(System.in).nextInt());
-        PreparedStatement statement = conn.prepareStatement("DELETE FROM `schema1`.`customer` WHERE (`idCustomer` = '" + customer.getCustomerID() + "');");
+        PreparedStatement statement = conn.prepareStatement("DELETE FROM `bank`.`customer` WHERE (`idCustomer` = '" + customer.getCustomerID() + "');");
         int roww = statement.executeUpdate();
         if (roww < 0) {
             System.out.println("Delete unsuccessfully");
