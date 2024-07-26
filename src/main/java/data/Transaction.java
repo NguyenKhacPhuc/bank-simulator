@@ -1,6 +1,10 @@
-package Bank;
+package data;
 
-import java.sql.*;
+import com.mysql.cj.util.StringInspector;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class Transaction {
     private int transactionId;
@@ -10,11 +14,11 @@ public class Transaction {
     private double amountMoney;
     private String receiverAccountNumber;
     private String senderAccountNumber;
-    private java.sql.Date time;
+    private String time;
     private double balanceAfterSend;
     private String message;
 
-    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, String transactionType, double amountMoney, String receiverAccountNumber, String senderAccountNumber, java.sql.Date time, double balanceAfterSend, String message) {
+    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, String transactionType, double amountMoney, String receiverAccountNumber, String senderAccountNumber, String time, double balanceAfterSend, String message) {
         this.transactionId = transactionId;
         this.senderAccountId = senderAccountId;
         this.receiverAccountId = receiverAccountId;
@@ -28,9 +32,6 @@ public class Transaction {
     }
 
     public Transaction() {
-    }
-
-    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, String transfers, int amountMoney, String number, String number1, int i, int balanceAfterSend, String done) {
     }
 
     public int getTransactionId() {
@@ -89,11 +90,11 @@ public class Transaction {
         this.senderAccountNumber = senderAccountNumber;
     }
 
-    public java.sql.Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(java.sql.Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

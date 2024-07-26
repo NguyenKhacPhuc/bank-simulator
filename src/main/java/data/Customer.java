@@ -1,4 +1,4 @@
-package Bank;
+package data;
 
 public class Customer {
     private int customerID;
@@ -13,6 +13,10 @@ public class Customer {
         Age = age;
         Address = address;
         this.accountsID = accountsID;
+    }
+
+    public Customer() {
+
     }
 
     public int getCustomerID() {
@@ -31,14 +35,6 @@ public class Customer {
         Name = name;
     }
 
-    public int getAge() {
-        return Age;
-    }
-
-    public void setAge(int age) {
-        Age = age;
-    }
-
     public String getAddress() {
         return Address;
     }
@@ -53,5 +49,23 @@ public class Customer {
 
     public void setAccountsID(int accountsID) {
         this.accountsID = accountsID;
+    }
+
+    public int getAge() {
+        return Age;
+    }
+
+    public void setAge(int age) {
+        Age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerID=" + customerID +
+                ", Name='" + Name + '\'' +
+                ", Address='" + Address + '\'' +
+                ", accountsID='" + accountsID + '\'' +
+                '}';
     }
 }
