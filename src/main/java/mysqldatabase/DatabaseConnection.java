@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DatabaseConnection {
-    final String DB_URL = "jdbc:mysql://localhost:3306/bank";
+    final String DB_URL = "jdbc:mysql://localhost:3306/bank?allowMultiQueries=true";
     final String PASSWORD = "";
     final String USER_NAME = "root";
 

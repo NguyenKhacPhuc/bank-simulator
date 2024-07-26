@@ -2,14 +2,16 @@ package data;
 
 public class Customer {
     private int customerID;
-    private String Name;
-    private String Address;
-    private String accountsID;
+    private String name;
+    private int age;
+    private String address;
+    private int accountsID;
 
-    public Customer(int customerID, String name, String address, String accountsID) {
+    public Customer(int customerID, String name, int age, String address, int accountsID) {
         this.customerID = customerID;
-        Name = name;
-        Address = address;
+        this.name = name;
+        this.age = age;
+        this.address = address;
         this.accountsID = accountsID;
     }
 
@@ -26,26 +28,34 @@ public class Customer {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
-    public String getAccountsID() {
+    public int getAccountsID() {
         return accountsID;
     }
 
-    public void setAccountsID(String accountsID) {
+    public void setAccountsID(int accountsID) {
         this.accountsID = accountsID;
     }
 
@@ -53,8 +63,8 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "customerID=" + customerID +
-                ", Name='" + Name + '\'' +
-                ", Address='" + Address + '\'' +
+                ", Name='" + name + '\'' +
+                ", Address='" + address + '\'' +
                 ", accountsID='" + accountsID + '\'' +
                 '}';
     }

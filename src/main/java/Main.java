@@ -29,17 +29,22 @@ public class Main {
         //load all customer, account, transactions to bank
         Bank bank = new Bank(customerManagement.getAllCustomer(connection), null, null);
         //display list of customer, accounts, transactions,
+
         //add account1 to bank
+
         //add account2 to bank
+
         //withdraw money of account1
+
         //deposit money of account2
+
         //execute transaction of account 1 to account 2
-        Account sender = new Account(1, 10000000.0, "Anh", "123123", 1000000.0, "123", 2);
-        Account receiver = new Account(2, 0.0, "Quan", "456456", 1000000.0, "123", 2);
+        Account sender = new Account(1,  "Anh",10000000.0, "123123", 1000000.0, "123", 2);
+        Account receiver = new Account(2,  "Quan",0.0, "456456", 1000000.0, "123", 2);
         double amount = 200.0;
 
         bankManagement.executeTransaction(transactionManagement, transaction, sender, receiver, amount, connection);
-        System.out.println(receiver.getBalance());
+        System.out.println(sender.getBalance());
 
         //update name
         //update account number

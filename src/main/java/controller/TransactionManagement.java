@@ -35,7 +35,7 @@ public class TransactionManagement {
                     "UPDATE `bank`.`account` SET `balance` = `balance` - ? WHERE `idAccount` = ?; " +
                     "UPDATE `bank`.`account` SET `balance` = `balance` + ? WHERE `idAccount` = ?; " +
                     "INSERT INTO `bank`.`transaction` (`idTransaction`, `senderAccountNumber`, `receiverAccountNumber`, `time`, `amountMoney`, `balanceAfterSend`, `message`, `transactionType`, `senderAccountId`, `receiverAccountId`)" +
-                    "(?, ?, ?,?,?,?,?,?,?,?); " +
+                    "values (?,?,?,?,?,?,?,?,?,?); " +
                     "COMMIT;";
 
             PreparedStatement statement = connection.prepareStatement(query);

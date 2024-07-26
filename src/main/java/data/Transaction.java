@@ -6,27 +6,27 @@ import java.sql.SQLException;
 
 public class Transaction {
     private int transactionId;
-    private int senderAccountId;
-    private int receiverAccountId;
-    private int transactionType;
-    private double amountMoney;
-    private String receiverAccountNumber;
     private String senderAccountNumber;
+    private String receiverAccountNumber;
     private String time;
+    private double amountMoney;
     private double balanceAfterSend;
     private String message;
+    private int transactionType;
+    private int senderAccountId;
+    private int receiverAccountId;
 
-    public Transaction(int transactionId, int senderAccountId, int receiverAccountId, int transactionType, double amountMoney, String receiverAccountNumber, String senderAccountNumber, String time, double balanceAfterSend, String message) {
+    public Transaction(int transactionId, String senderAccountNumber, String receiverAccountNumber, String time, double amountMoney, double balanceAfterSend, String message, int transactionType, int senderAccountId, int receiverAccountId) {
         this.transactionId = transactionId;
-        this.senderAccountId = senderAccountId;
-        this.receiverAccountId = receiverAccountId;
-        this.transactionType = transactionType;
-        this.amountMoney = amountMoney;
-        this.receiverAccountNumber = receiverAccountNumber;
         this.senderAccountNumber = senderAccountNumber;
+        this.receiverAccountNumber = receiverAccountNumber;
         this.time = time;
+        this.amountMoney = amountMoney;
         this.balanceAfterSend = balanceAfterSend;
         this.message = message;
+        this.transactionType = transactionType;
+        this.senderAccountId = senderAccountId;
+        this.receiverAccountId = receiverAccountId;
     }
 
     public Transaction() {

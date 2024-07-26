@@ -2,17 +2,18 @@ package data;
 
 public class Account {
     private int accountID;
-    private double balance;
     private String userName;
+    private double balance;
     private String accNumber;
     private double limitDayWithdrawal;
     private String password;
     private int bankID;
 
-    public Account(int accountID, double balance, String userName, String accNumber, double limitDayWithdrawal, String password, int bankID) {
+    public Account(int accountID, String userName, double balance, String accNumber, double limitDayWithdrawal, String password, int bankID) {
         this.accountID = accountID;
-        this.balance = balance;
         this.userName = userName;
+
+        this.balance = balance;
         this.accNumber = accNumber;
         this.limitDayWithdrawal = limitDayWithdrawal;
         this.password = password;
