@@ -32,7 +32,7 @@ public class CustomerManagement {
         PreparedStatement statement = conn.prepareStatement("Select * from customer");
         ResultSet rs = statement.executeQuery();
         while(rs.next()) {
-            Customer customer = new Customer(rs.getInt("idCustomer"), rs.getString("name"), rs.getString("age"), rs.getString("address"), rs.getInt("idAccount"));
+            Customer customer = new Customer(rs.getInt("idCustomer"), rs.getString("name"), rs.getInt("age"), rs.getString("address"), rs.getInt("idAccount"));
             customers.add(customer);
         }
         return customers;
