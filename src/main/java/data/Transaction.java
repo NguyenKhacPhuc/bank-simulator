@@ -114,6 +114,22 @@ public class Transaction {
         this.message = message;
     }
 
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "transactionId=" + transactionId +
+                ", senderAccountId=" + senderAccountId +
+                ", receiverAccountId=" + receiverAccountId +
+                ", transactionType='" + transactionType + '\'' +
+                ", amountMoney=" + amountMoney +
+                ", receiverAccountNumber='" + receiverAccountNumber + '\'' +
+                ", senderAccountNumber='" + senderAccountNumber + '\'' +
+                ", time='" + time + '\'' +
+                ", balanceAfterSend=" + balanceAfterSend +
+                ", message='" + message + '\'' +
+                '}';
+    }
+
     public void delete(Connection conn, Transaction trans) throws SQLException {
         System.out.println("Inside delete");
         PreparedStatement statement = conn.prepareStatement("DELETE FROM `bank`.`transaction` WHERE (`idTransaction` = '2');");

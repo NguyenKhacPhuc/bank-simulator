@@ -1,5 +1,6 @@
 package controller;
 
+import data.Account;
 import data.Transaction;
 
 import java.sql.Connection;
@@ -54,6 +55,54 @@ public class TransactionManagement {
             transactions.add(transaction);
         }
         return transactions;
+    }
+
+        public void executeTransaction(Transaction transaction, Account sender, Account receiver, double amount,String message, Connection connection) throws SQLException {
+        System.out.println("Starting transaction");
+        try {
+            String query = "BEGIN; " +
+                    "UPDATE account SET balance = balance - ? WHERE idAccount = ?; " +
+                    "UPDATE account SET balance = balance + ? WHERE idAccount = ?; " +
+                    "INSERT INTO transaction (idTransaction, senderAccountNumber,receiverAccountNumber, time, amountMoney,balanceAfterSend,message, transactionType, senderAccountId, receiverAccountId)" +
+                    "values (?,?,?,?,?,?,?,?,?,?); " +
+                    "COMMIT;";
+
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setDouble(1, amount);
+//            transaction.setSenderAccountId(new Scanner(System.in).nextInt());
+            statement.setInt(2, sender.getAccountID());
+            statement.setDouble(3, amount);
+//            transaction.setSenderAccountId(new Scanner(System.in).nextInt());
+            statement.setInt(4, receiver.getAccountID());
+
+            statement.setInt(5, transaction.getTransactionId());
+            statement.setString(6, sender.getAccNumber());
+            statement.setString(7, receiver.getAccNumber());
+            statement.setString(8, transaction.getTime());
+            statement.setDouble(9, amount);
+            statement.setDouble(10, sender.getBalance() - amount);
+            statement.setString(11, message);
+            statement.setString(12, "TRANSFER");
+            statement.setInt(13, sender.getAccountID());
+            statement.setInt(14, receiver.getAccountID());
+
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error in executeTransaction: " + e);
+        }
+
+    }
+
+    public double getAccountBalance(int accountID, Connection connection) throws SQLException {
+        String qr = "SELECT balance FROM account WHERE idAccount = ?";
+        PreparedStatement statement = connection.prepareStatement(qr);
+        statement.setInt(1, accountID);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return resultSet.getDouble("balance");
+        }
+        return 0.0;
     }
 
 }

@@ -4,7 +4,9 @@ import data.Account;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -57,19 +59,60 @@ public class AccountManagement {
         }
     }
 
+    public List<Account> getAllAccounts(Connection conn) throws SQLException {
+        List<Account> accounts = new ArrayList<>();
+        PreparedStatement statement = conn.prepareStatement("SELECT * FROM `account`");
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()) {
+            Account account = new Account(rs.getInt("idAccount"), rs.getString("userName"), rs.getDouble("balance"),
+                    rs.getString("accNumber"), rs.getDouble("limitDayWithdrawal"), rs.getString("password"), rs.getInt("idBank"));
+            accounts.add(account);
+        }
+        return accounts;
+    }
+
     public void withdraw(Account account, double amount) {
-
+        try {
+            if (account.getBalance() > amount) {
+                account.setBalance(account.getBalance() - amount);
+                System.out.println("Withdrawal sucessfully. New Balance :  "+account.getBalance());
+            } else {
+                throw new IllegalArgumentException("Insufficient balance or invalid amount.");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Withdrawal failed");
+        }
     }
 
-    public void transfer(double amount) {
-
+    public void transfer(Account fromAccount,Account toAccount, double amount) {
+        try{
+            if (amount > 0 && amount <= fromAccount.getBalance()) {
+                withdraw(fromAccount, amount);
+                deposit(toAccount, amount);
+                System.out.println("Transfer successful. New balance of source account: " + fromAccount.getBalance());
+                System.out.println("New balance of destination account: " + toAccount.getBalance());
+            } else {
+                throw new IllegalArgumentException("Invalid transfer");            }
+        }
+        catch (IllegalArgumentException e) {
+            System.out.println("Transfer Failed: ");
+        }
     }
 
-    public void deposit(double amount) {
-
+    public void deposit(Account account, double amount) {
+        try {
+            if (amount > 0) {
+                account.setBalance(account.getBalance() + amount);
+            } else {
+                System.out.println("Invalid deposit amount");
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Deposit failed");
+        }
     }
 
     public List<Account> getAllAccount() {
         return null;
     }
+
 }

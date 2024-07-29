@@ -9,10 +9,10 @@ public class Account {
     private String password;
     private int bankID;
 
-    public Account(int accountID, double balance, String userName, String accNumber, double limitDayWithdrawal, String password, int bankID) {
+    public Account(int accountID, String userName, double balance, String accNumber, double limitDayWithdrawal, String password, int bankID) {
         this.accountID = accountID;
-        this.balance = balance;
         this.userName = userName;
+        this.balance = balance;
         this.accNumber = accNumber;
         this.limitDayWithdrawal = limitDayWithdrawal;
         this.password = password;
@@ -78,5 +78,16 @@ public class Account {
         this.bankID = bankID;
     }
 
-
+    @Override
+    public String toString() {
+        return "Account{" +
+                "accountID=" + accountID +
+                ", balance=" + balance +
+                ", userName='" + userName + '\'' +
+                ", accNumber='" + accNumber + '\'' +
+                ", limitDayWithdrawal=" + limitDayWithdrawal +
+                ", password='" + password + '\'' +
+                ", bankID=" + bankID +
+                '}';
+    }
 }
