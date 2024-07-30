@@ -3,9 +3,9 @@ package data;
 import java.util.List;
 
 public class Bank {
-    private List<Customer> customers;
-    private List<Account> accounts;
-    private List<Transaction> transactions;
+    private final List<Customer> customers;
+    private final List<Account> accounts;
+    private final List<Transaction> transactions;
 
 
     public Bank(List<Customer> customers, List<Account> accounts, List<Transaction> transactions) {

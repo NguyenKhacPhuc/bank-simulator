@@ -8,10 +8,6 @@ public class DatabaseConnection {
     final String PASSWORD = "";
     final String USER_NAME = "root";
 
-    public Connection getConnection() {
-        return getConnection(DB_URL, USER_NAME, PASSWORD);
-    }
-
     public static Connection getConnection(String dbURL, String userName, String password) {
         Connection conn = null;
         try {
@@ -23,5 +19,9 @@ public class DatabaseConnection {
             ex.printStackTrace();
         }
         return conn;
+    }
+
+    public Connection getConnection() {
+        return getConnection(DB_URL, USER_NAME, PASSWORD);
     }
 }

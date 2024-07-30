@@ -71,43 +71,31 @@ public class AccountManagement {
         return accounts;
     }
 
-    public void withdraw(Account account, double amount) {
+    public void executeWithdraw(Account account, double amount, Connection conn) throws SQLException {
         try {
-            if (account.getBalance() > amount) {
-                account.setBalance(account.getBalance() - amount);
-                System.out.println("Withdrawal sucessfully. New Balance :  "+account.getBalance());
-            } else {
-                throw new IllegalArgumentException("Insufficient balance or invalid amount.");
+            if (amount > 0 && account.getBalance() >= amount) {
+                String query = "UPDATE account SET balance = balance - ? WHERE idAccount = ?;";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setDouble(1, amount);
+                statement.setInt(2, account.getBankID());
+                statement.executeUpdate();
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Withdrawal failed");
+        } catch (Exception e) {
+            System.out.println("Error in executeTransaction: " + e);
         }
     }
 
-    public void transfer(Account fromAccount,Account toAccount, double amount) {
-        try{
-            if (amount > 0 && amount <= fromAccount.getBalance()) {
-                withdraw(fromAccount, amount);
-                deposit(toAccount, amount);
-                System.out.println("Transfer successful. New balance of source account: " + fromAccount.getBalance());
-                System.out.println("New balance of destination account: " + toAccount.getBalance());
-            } else {
-                throw new IllegalArgumentException("Invalid transfer");            }
-        }
-        catch (IllegalArgumentException e) {
-            System.out.println("Transfer Failed: ");
-        }
-    }
-
-    public void deposit(Account account, double amount) {
+    public void executeDeposit(Account account, double amount, Connection conn) throws SQLException {
         try {
             if (amount > 0) {
-                account.setBalance(account.getBalance() + amount);
-            } else {
-                System.out.println("Invalid deposit amount");
+                String query = "UPDATE account SET balance = balance + ? WHERE idAccount = ?;";
+                PreparedStatement statement = conn.prepareStatement(query);
+                statement.setDouble(1, amount);
+                statement.setInt(2, account.getBankID());
+                statement.executeUpdate();
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Deposit failed");
+        } catch (Exception e) {
+            System.out.println("Error in executeTransaction: " + e);
         }
     }
 

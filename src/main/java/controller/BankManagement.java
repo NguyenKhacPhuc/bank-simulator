@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.Scanner;
 
 //Duc Anh
@@ -35,6 +34,30 @@ public class BankManagement {
             System.out.println("Transaction completed successfully.");
         } else {
             System.out.println("Fail to transfer transaction. Please check your account balance.");
+        }
+    }
+
+    public void withdrawBank(AccountManagement accountManagement, int withDrawerID, double amount, Connection connection) throws SQLException {
+//        double senderBalance = transactionManagement.getAccountBalance(sender.getAccountID(), connection);
+
+        Account sender = getAccountDetails(withDrawerID, connection);
+        if (sender != null && sender.getBalance() > amount) {
+            accountManagement.executeWithdraw(sender, amount, connection);
+            System.out.println("Withdraw completed successfully.");
+        } else {
+            System.out.println("Fail Withdraw. Please check your account balance.");
+        }
+    }
+
+    public void depositBank(AccountManagement accountManagement, int depositorID, double amount, Connection connection) throws SQLException {
+//        double senderBalance = transactionManagement.getAccountBalance(sender.getAccountID(), connection);
+
+        Account sender = getAccountDetails(depositorID, connection);
+        if (sender != null) {
+            accountManagement.executeDeposit(sender, amount, connection);
+            System.out.println("Deposit completed successfully.");
+        } else {
+            System.out.println("Fail Deposit. Please check your account balance.");
         }
     }
 

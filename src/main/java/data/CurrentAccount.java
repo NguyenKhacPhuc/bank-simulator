@@ -1,4 +1,4 @@
 package data;
 
-public class CurrentAccount extends Account{
+public class CurrentAccount extends Account {
 }
