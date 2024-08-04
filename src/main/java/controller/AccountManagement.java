@@ -77,7 +77,7 @@ public class AccountManagement {
                 String query = "UPDATE account SET balance = balance - ? WHERE idAccount = ?;";
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setDouble(1, amount);
-                statement.setInt(2, account.getBankID());
+                statement.setInt(2, account.getAccountID());
                 statement.executeUpdate();
             }
         } catch (Exception e) {
@@ -91,7 +91,7 @@ public class AccountManagement {
                 String query = "UPDATE account SET balance = balance + ? WHERE idAccount = ?;";
                 PreparedStatement statement = conn.prepareStatement(query);
                 statement.setDouble(1, amount);
-                statement.setInt(2, account.getBankID());
+                statement.setInt(2, account.getAccountID());
                 statement.executeUpdate();
             }
         } catch (Exception e) {
@@ -99,8 +99,6 @@ public class AccountManagement {
         }
     }
 
-    public List<Account> getAllAccount() {
-        return null;
-    }
+
 
 }
