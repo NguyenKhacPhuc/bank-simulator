@@ -27,37 +27,39 @@ public class Main {
         BankManagement bankManagement = new BankManagement();
         Connection connection = new DatabaseConnection().getConnection();
         Bank bank = new Bank(customerManagement.getAllCustomer(connection), accountManagement.getAllAccounts(connection), transactionManagement.getAllTransaction(connection));
-        int sc;
-        do {
-            System.out.println("1. get All");
-            System.out.println("2. add Account");
-            System.out.println("3. execute Transaction");
-            System.out.println("4. withdraw Account");
-            System.out.println("5. deposit Account");
-            System.out.println("0. exit");
-            sc = new Scanner(System.in).nextInt();
-
-            switch (sc) {
-                case 1:
-                    display(bank);
-                    break;
-                case 2:
-                    bankManagement.addAccount(connection, account);
-                    break;
-                case 3:
-                    execute(bankManagement, account, transactionManagement, transaction, connection);
-                    break;
-                case 4:
-                    withdraw(bankManagement, account, accountManagement, connection);
-                    break;
-                case 5:
-                    deposit(bankManagement, account, accountManagement, connection);
-                    break;
-                default:
-                    System.out.println("Invalid option");
-                    break;
-            }
-        } while (sc != 0);
+        Connection connection1 = new DatabaseConnection().getConnection();
+        System.out.println(connection1 + " " + connection);
+//        int sc;
+//        do {
+//            System.out.println("1. get All");
+//            System.out.println("2. add Account");
+//            System.out.println("3. execute Transaction");
+//            System.out.println("4. withdraw Account");
+//            System.out.println("5. deposit Account");
+//            System.out.println("0. exit");
+//            sc = new Scanner(System.in).nextInt();
+//
+//            switch (sc) {
+//                case 1:
+//                    display(bank);
+//                    break;
+//                case 2:
+//                    bankManagement.addAccount(connection, account);
+//                    break;
+//                case 3:
+//                    execute(bankManagement, account, transactionManagement, transaction, connection);
+//                    break;
+//                case 4:
+//                    withdraw(bankManagement, account, accountManagement, connection);
+//                    break;
+//                case 5:
+//                    deposit(bankManagement, account, accountManagement, connection);
+//                    break;
+//                default:
+//                    System.out.println("Invalid option");
+//                    break;
+//            }
+//        } while (sc != 0);
     }
 
     public static void execute(BankManagement bankManagement, Account account, TransactionManagement transactionManagement, Transaction transaction, Connection connection) throws SQLException {
